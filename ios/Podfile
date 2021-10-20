@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '11.0'
 
-target 'TSProject' do
+target 'EgoApp' do
   config = use_native_modules!
 
   use_react_native!(
@@ -12,7 +12,7 @@ target 'TSProject' do
     :hermes_enabled => false
   )
 
-  target 'TSProjectTests' do
+  target 'EgoAppTests' do
     inherit! :complete
     # Pods for testing
   end
