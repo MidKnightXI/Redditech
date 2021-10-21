@@ -5,21 +5,20 @@
 *
 */
 
+import { authorize } from 'react-native-app-auth';
+
+// base config
 const config = {
-    redirectUrl: 'com.myapp://oauth2redirect/reddit', /** ajouter la route sur laquelle reddit va rediriger */
-    clientId: '<b56Jin3B82dprZpH7E1j3A>',
-    clientSecret: '', // empty string - needed for iOS
-    scopes: ['identity'],
-    serviceConfiguration: {
-      authorizationEndpoint: 'https://www.reddit.com/api/v1/authorize.compact',
-      tokenEndpoint: 'https://www.reddit.com/api/v1/access_token',
-    },
-    customHeaders: {
-      token: {
-        Authorization: 'Basic <base64encoded clientID:YjU2SmluM0I4MmRwclpwSDdFMWozQQo=>',
-      },
-    },
-  };
-  
-  // Log in to get an authentication token
-  const authState = await authorize(config);  
+  issuer: '<YOUR_ISSUER_URL>',
+  clientId: '<YOUR_CLIENT_ID>',
+  redirectUrl: '<YOUR_REDIRECT_URL>',
+  scopes: ['<YOUR_SCOPE_ARRAY>'],
+};
+
+// use the client to make the auth request and receive the authState
+try {
+  const result = await authorize(config);
+  // result includes accessToken, accessTokenExpirationDate and refreshToken
+} catch (error) {
+  console.log(error);
+}

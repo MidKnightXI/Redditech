@@ -131,6 +131,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
+        manifestPlaceholders = [appAuthRedirectScheme: 'com.egoapp']
         applicationId "com.egoapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
