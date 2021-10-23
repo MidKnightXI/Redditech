@@ -1,15 +1,8 @@
-/**
-*    Source:
-*    
-*    https://github.com/FormidableLabs/react-native-app-auth/blob/main/docs/config-examples/reddit.md
-*
-*/
-
 import { authorize } from 'react-native-app-auth';
 
 // base config
-const config = {
-    redirectUrl: 'com.EgoApp://oauth2redirect/reddit',
+const login = {
+    redirectUrl: 'com.redditech://auth',
     clientId: '<b56Jin3B82dprZpH7E1j3A>',
     clientSecret: '', // empty string - needed for iOS
     scopes: ['identity'],
@@ -24,7 +17,4 @@ const config = {
     },
   };
 
-// use the client to make the auth request and receive the authState
-const result = await authorize(config);
-
-export default result;
+export default login;
