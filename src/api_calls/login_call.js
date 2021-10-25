@@ -3,7 +3,7 @@ import { authorize } from 'react-native-app-auth';
 // base config
 const login = {
     redirectUrl: 'com.redditech://auth',
-    clientId: '<b56Jin3B82dprZpH7E1j3A>',
+    clientId: 'b56Jin3B82dprZpH7E1j3A',
     clientSecret: '', // empty string - needed for iOS
     scopes: ['identity'],
     serviceConfiguration: {
@@ -12,7 +12,7 @@ const login = {
     },
     customHeaders: {
       token: {
-        Authorization: 'Basic <base64encoded clientID:YjU2SmluM0I4MmRwclpwSDdFMWozQQo=>',
+        Authorization: 'Basic YjU2SmluM0I4MmRwclpwSDdFMWozQToK',
       },
     },
   };
