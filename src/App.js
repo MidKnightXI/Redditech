@@ -6,26 +6,29 @@
  * @flow strict-local
  */
 
-import React, {
-    Component,
-    View,        
-    Text,
-} from 'react-native';
+ import * as React from 'react';
+ import { View, Text } from 'react-native';
+ import { NavigationContainer } from '@react-navigation/native';
+ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { NavigationContainer } from '@react-navigation/native';
-import callRedApi from './api_calls/login_call';
-import type {Node} from 'react';
-
-const TokenContext = React.createContext(callRedApi());
-
-const App: () => Node = () => {
-  return (
-      <View>
-          <Text>
-              this is a text
-          </Text>
+function HomeScreen() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>this is your homescreen</Text>
       </View>
-  );
-};
-
-export default App;
+    );
+  }
+  
+  const Stack = createNativeStackNavigator();
+  
+  function App() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+  
+  export default App;

@@ -1,8 +1,8 @@
+// base config
 import { authorize } from 'react-native-app-auth';
 
-// base config
 const login = {
-    redirectUrl: 'com.redditech://auth',
+    redirectUrl: 'com.egoapp:/oauth2',
     clientId: 'b56Jin3B82dprZpH7E1j3A',
     clientSecret: '', // empty string - needed for iOS
     scopes: ['identity'],
@@ -17,4 +17,14 @@ const login = {
     },
   };
 
-export default login;
+async function callRedApi() {
+  try {
+      const tmp = await authorize(login);
+  } catch(error) {
+    console.error(error);
+  }
+  console.log(tmp);
+  return tmp;
+}
+
+export default callRedApi();
