@@ -3,7 +3,7 @@ import { authorize } from 'react-native-app-auth';
 
 const login = {
     redirectUrl: 'com.egoapp:/oauth2',
-    clientId: 'b56Jin3B82dprZpH7E1j3A',
+    clientId: 'SutU9k93wGLsYz3qWnHkQg',
     clientSecret: '', // empty string - needed for iOS
     scopes: ['identity'],
     serviceConfiguration: {
