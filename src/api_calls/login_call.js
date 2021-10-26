@@ -2,7 +2,7 @@
 import { authorize } from 'react-native-app-auth';
 
 const login = {
-    redirectUrl: 'com.egoapp:/oauth2',
+    redirectUrl: 'com.egoapp://oauth2',
     clientId: 'SutU9k93wGLsYz3qWnHkQg',
     clientSecret: '', // empty string - needed for iOS
     scopes: ['identity'],
@@ -12,7 +12,7 @@ const login = {
     },
     customHeaders: {
       token: {
-        Authorization: 'Basic YjU2SmluM0I4MmRwclpwSDdFMWozQToK',
+        Authorization: 'Basic U3V0VTlrOTN3R0xzWXozcVduSGtRZzoK',
       },
     },
   };
