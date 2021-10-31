@@ -1,32 +1,12 @@
 import * as React from 'react'
-import { Image, Button, View, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
-
-function ProfileScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Profile Screen</Text>
-    </View>
-  );
-}
-
-function MessageScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Messages Screen</Text>
-    </View>
-  );
-}
+import HomeScreen from './components/home/home';
+import ProfileScreen from './components/profile/profile'
+import MessageScreen from './components/messages/messages';
 
 const Tab = createMaterialBottomTabNavigator();
 
