@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 function HomeScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{color:'black', fontWeight:'bold'}}>Home Screen</Text>
+      <Text>Home Screen</Text>
     </View>
   );
 }
@@ -23,7 +23,7 @@ function ProfileScreen() {
 function MessageScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
+      <Text>Messages Screen</Text>
     </View>
   );
 }
@@ -35,8 +35,8 @@ function App() {
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Feed"
-        activeColor="#e91e63"
-        barStyle={{ backgroundColor: 'tomato' }}
+        activeColor="#000000"
+        barStyle={{ backgroundColor: 'darkorange'}}
       >
         <Tab.Screen
           name="Home"
@@ -54,7 +54,7 @@ function App() {
           options={{
             tabBarLabel: 'Messages',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="message-text-outline" color={color} size={22} />
+              <MaterialCommunityIcons name="message-processing-outline" color={color} size={22} />
             ),
           }}
         />
