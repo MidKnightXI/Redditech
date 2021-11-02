@@ -1,5 +1,7 @@
-import { View, Text } from 'react-native'
-import * as React from 'react'
+import { View, Text, ScrollView } from 'react-native';
+import * as React from 'react';
+
+import { useAuth } from '../../use-auth';
 
 export default function HomeScreen() {
     return (
