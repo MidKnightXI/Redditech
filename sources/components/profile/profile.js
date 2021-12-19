@@ -17,7 +17,7 @@ export default function ProfileScreen() {
             type='evilicon'
             onPress={()=>setRenderParam(true)}
           />
-          <Text> this is setting button</Text>       
+          <Text> this is setting button</Text>
         </View>
       </View>
     );
