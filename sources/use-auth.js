@@ -36,7 +36,8 @@ function useProvideAuth() {
     };
     try {
       const tmp = await authorize(config);
-      setToken(tmp);
+      console.log(tmp.accessToken)
+      setToken(tmp.accessToken);
       setIsSignIn(true);
       return tmp;
     } catch(error) {
@@ -52,7 +53,7 @@ function useProvideAuth() {
       headers: url.includes('oauth') ? {"Authorization": "bearer " + token} : undefined,
       "User-agent": "Ego",
     }
-    console.log('Fetching on', url)
+    console.log('Fetching on ' + url + ' with ' + token)
     const res = await fetch(url, config)
     const data = await res.json()
     console.log(data)

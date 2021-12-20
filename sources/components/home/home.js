@@ -10,7 +10,7 @@ export default function HomeScreen() {
   let [posts, setPosts] = useState([])
 
   async function fetchData(sort = 'hot') {
-    data = await clientStatus.request(clientStatus.isSignIn ? `https://oauth.reddit.com/${sort}.json`: `https://reddit.com/${sort}.json`, 'GET')
+    const data = await clientStatus.request(clientStatus.isSignIn ? `https://oauth.reddit.com/${sort}.json`: `https://reddit.com/${sort}.json`, 'GET')
     const new_posts = data.data.children.filter(p => p.kind === 't3').map(p => p.data)
     setPosts(new_posts);
   }
