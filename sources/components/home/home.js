@@ -63,27 +63,30 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    alignItems: "center",
-    flexDirection: "column"
+    alignItems: 'center',
+    flexDirection: 'column'
   },
   buttonbar: {
-    flexDirection: "row",
+    flexDirection: 'row',
     flex: 1,
   },
   button: {
+    justifyContent: 'center',
     paddingLeft: 15,
     paddingRight: 15,
     paddingBottom: 6,
     paddingTop: 6,
-    borderWidth: 1,
-    borderColor: "darkorange",
+    borderWidth: 2,
+    borderColor: 'darkorange',
     margin: 10,
     borderRadius: 10,
     backgroundColor: '#ffff',
+    fontFamily: 'tahoma',
+    fontWeight: 'bold'
   },
   posts: {
     flex: 8,
-    flexDirection: "column",
+    flexDirection: 'column',
     padding: 30
   },
 })
