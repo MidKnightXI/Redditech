@@ -12,9 +12,9 @@ export default function HomeScreen() {
   let key = 0
 
   async function fetchData(sort = 'hot') {
-    const data = await clientStatus.request(clientStatus.isSignIn ? `https://oauth.reddit.com/${sort}.json`: `https://reddit.com/${sort}.json`, 'GET')
-    const new_posts = data.data.children.filter(p => p.kind === 't3').map(p => p.data)
-    setPosts(new_posts);
+    // const data = await clientStatus.request(clientStatus.isSignIn ? `https://oauth.reddit.com/${sort}.json`: `https://reddit.com/${sort}.json`, 'GET')
+    // const new_posts = data.data.children.filter(p => p.kind === 't3').map(p => p.data)
+    // setPosts(new_posts);
   }
 
   const isFocused = useIsFocused();
@@ -28,19 +28,19 @@ export default function HomeScreen() {
   return (
     <View style={style.container}>
       <View style={style.buttonbar}>
-        <View style={style.button}>
+        <View>
           <TouchableOpacity onPress={() => fetchData('best') }>
-            <Text>Best</Text>
+            <Text style={style.button}>Best</Text>
           </TouchableOpacity>
         </View>
-        <View style={style.button}>
+        <View>
           <TouchableOpacity onPress={() => fetchData('new') }>
-            <Text>New</Text>
+            <Text style={style.button}>New</Text>
           </TouchableOpacity>
         </View>
-        <View style={style.button}>
+        <View>
           <TouchableOpacity onPress={() => fetchData('hot') }>
-            <Text>Hot</Text>
+            <Text style={style.button}>Hot</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -71,7 +71,15 @@ const style = StyleSheet.create({
     flex: 1,
   },
   button: {
-    padding: 10
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingBottom: 6,
+    paddingTop: 6,
+    borderWidth: 1,
+    borderColor: "darkorange",
+    margin: 10,
+    borderRadius: 10,
+    backgroundColor: '#ffff',
   },
   posts: {
     flex: 8,
