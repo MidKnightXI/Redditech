@@ -4,10 +4,12 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 import { useAuth } from '../../use-auth';
+import PostBox from './PostBox';
 
 export default function HomeScreen() {
   const clientStatus = useAuth();
   let [posts, setPosts] = useState([])
+  let key = 0
 
   async function fetchData(sort = 'hot') {
     const data = await clientStatus.request(clientStatus.isSignIn ? `https://oauth.reddit.com/${sort}.json`: `https://reddit.com/${sort}.json`, 'GET')
@@ -21,6 +23,7 @@ export default function HomeScreen() {
     if (isFocused)
       fetchData().then();
   }, [isFocused]);
+
 
   return (
     <View style={style.container}>
@@ -41,12 +44,17 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView style={{
-        flexDirection:"column",
-        flex: 8
-      }}>
-        <Text>so there will be some posts here</Text>
-      </ScrollView>
+        <View style={style.posts}>
+          <ScrollView>
+            {posts.map(element => {
+              return (
+                <TouchableOpacity key={key++}>
+                  <PostBox data={element}/>
+                </TouchableOpacity>
+              )
+            })}
+          </ScrollView>
+        </View>
     </View>
   );
 }
@@ -55,13 +63,19 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    alignItems: "center"
+    alignItems: "center",
+    flexDirection: "column"
   },
   buttonbar: {
-    flex: 2,
     flexDirection: "row",
+    flex: 1,
   },
   button: {
     padding: 10
+  },
+  posts: {
+    flex: 8,
+    flexDirection: "column",
+    padding: 30
   },
 })
