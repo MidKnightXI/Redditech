@@ -12,9 +12,9 @@ export default function HomeScreen() {
   let key = 0
 
   async function fetchData(sort = 'hot') {
-    // const data = await clientStatus.request(clientStatus.isSignIn ? `https://oauth.reddit.com/${sort}.json`: `https://reddit.com/${sort}.json`, 'GET')
-    // const new_posts = data.data.children.filter(p => p.kind === 't3').map(p => p.data)
-    // setPosts(new_posts);
+    const data = await clientStatus.request(clientStatus.isSignIn ? `https://oauth.reddit.com/${sort}.json`: `https://reddit.com/${sort}.json`, 'GET')
+    const new_posts = data.data.children.filter(p => p.kind === 't3').map(p => p.data)
+    setPosts(new_posts);
   }
 
   const isFocused = useIsFocused();
