@@ -48,9 +48,9 @@ export default function HomeScreen() {
           <ScrollView>
             {posts.map(element => {
               return (
-                <TouchableOpacity key={key++}>
+                <View style={style.postcontainer}>
                   <PostBox data={element}/>
-                </TouchableOpacity>
+                </View>
               )
             })}
           </ScrollView>
@@ -62,7 +62,7 @@ export default function HomeScreen() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: 7,
     alignItems: 'center',
     flexDirection: 'column'
   },
@@ -85,8 +85,13 @@ const style = StyleSheet.create({
     fontWeight: 'bold'
   },
   posts: {
-    flex: 8,
+    flex: 9,
     flexDirection: 'column',
-    padding: 30
+    padding: 5,
+    justifyContent: 'center',
   },
+  postcontainer: {
+    paddingBottom: 3,
+    paddingTop: 3
+  }
 })
