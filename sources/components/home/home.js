@@ -8,7 +8,7 @@ import PostBox from './PostBox';
 
 export default function HomeScreen() {
   const clientStatus = useAuth();
-  let [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([])
   let key = 0
 
   async function fetchData(sort = 'hot') {

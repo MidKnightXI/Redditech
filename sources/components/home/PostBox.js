@@ -6,31 +6,59 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useAuth } from '../../use-auth';
 
 export default function PostBox(props) {
+
   const data = props.data
-  let [isUpvoted, SetIsUpvoted] = useState(false)
-  let [isDownvoted, SetIsDownvoted] = useState(false)
+
   const subname = data.subreddit_name_prefixed
   const subtitle = data.title
   const postid = data.id
   const postauth = data.author
+  const upvotes = data.ups
+  const downvotes = data.downs
+
+  const [upvoteState, SetUpvoteState] = useState(null)
+  let likes = data.likes
 
   let mediatype = undefined
-  let mediaval = undefined
+  let medialink = undefined
 
   if (data.post_hint === 'hosted:video') {
     mediatype = 'video'
-    mediaval = data.media.reddit_video.scrubber_media_url
-    console.log(`MediaValue: ${mediaval}`)
+    medialink = data.media.reddit_video.scrubber_media_url
   } else if (data.post_hint === 'image') {
-
+    mediatype = 'image'
+    medialink = data.url
   } else if (data.post_hint === 'self') {
-
-  } else {
-    console.log(`So wtf is ${data.post_hint} then huh ??!!`)
+    mediatype = 'text'
+    medialink = data.selftext
+    console.log('Self content: ' + medialink)
   }
 
 
   const isFocused = useIsFocused()
+
+  useEffect(() => {
+    if (isFocused) SetUpvoteState(likes)
+  }, [isFocused]);
+
+  const toggleVote = (voteType) => {
+    // voteType:
+    // True === upvote
+    // False === downvote
+    // null === neither up or down
+    if (voteType) {
+      console.log('upvoted')
+      SetUpvoteState(true)
+    } else if (!voteType) {
+      console.log('downvoted')
+      SetUpvoteState(false)
+    } else if (voteType === null) {
+      console.log('nullvoted')
+      SetUpvoteState(null)
+    } else {
+      console.info('UpVoteSystem: you fucked up dude')
+    }
+  }
 
   return (
     <View>

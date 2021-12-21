@@ -58,11 +58,31 @@ function useProvideAuth() {
     if (data.error)
       throw data.message;
     return data;
-}
+  }
+  const voteRequest = async (postid, voteType) => {
+    let form = new FormData()
+    formData.append('id', postid)
+    if (voteType)
+      formData.append('dir', 1)
+    else if (!voteType)
+      formData.append('dir', -1)
+    else if (voteType === null)
+      formData.append('dir', 0)
+    else
+      console.info('voteRequest: you fucked up with something dude')
+    const config = {
+      method: 'POST',
+      headers: {"Authorization": "bearer " + api.access_token},
+      "User-agent": "redditech",
+      body: form
+    }
+    const url = 'https://oauth.reddit.com/api/vote'
+  }
   return {
     token,
     isSignIn,
     signin,
     request,
+    voteRequest,
   };
 }
