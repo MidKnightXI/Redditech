@@ -62,7 +62,12 @@ export default function PostBox(props) {
 
   return (
     <View>
-      <Text>test</Text>
+      <View>
+        <Text>{`Posted by ${postauth} on ${subname}`}</Text>
+      </View>
+      <View>
+        <Text>{`${subtitle}`}</Text>
+      </View>
     </View>
   )
 }
