@@ -2,6 +2,7 @@ import { useIsFocused } from '@react-navigation/native';
 import * as React from 'react'
 import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import Video from 'react-native-video'
 
 import { useAuth } from '../../use-auth';
 
@@ -24,7 +25,7 @@ export default function PostBox(props) {
 
   if (data.post_hint === 'hosted:video') {
     mediatype = 'video'
-    medialink = data.media.reddit_video.scrubber_media_url
+    medialink = data.media.reddit_video.fallback_url
   } else if (data.post_hint === 'image') {
     mediatype = 'image'
     medialink = data.url
@@ -64,7 +65,7 @@ export default function PostBox(props) {
         <Text style={style.title}>{`Posted by ${postauth} on ${subname}`}</Text>
       </View>
       <View>
-        <Text>{`${subtitle}`}</Text>
+        <Text style={{color: 'black'}}>{`${subtitle}`}</Text>
       </View>
       <View style={style.media}>
         <DisplayMedia mediatype={mediatype} medialink={medialink}/>
@@ -76,8 +77,14 @@ export default function PostBox(props) {
 
 function DisplayMedia(props) {
   if (props.mediatype === 'video') {
+    const videoRef = React.useRef(null)
+
     return (
-      <Text>{`There will be a vid here soon, link: ${props.medialink}`}</Text>
+      <Video
+        source={{ uri: props.medialink }}
+        style={style.video}
+        controls={true}
+        ref={videoRef} />
     )
   } else if (props.mediatype === 'image') {
     return (
@@ -90,7 +97,7 @@ function DisplayMedia(props) {
     )
   } else if (props.mediatype === 'text') {
     return (
-      <Text>{`${props.medialink}`}</Text>
+      <Text style={{color: 'black'}}>{`${props.medialink}`}</Text>
     )
   } else if (props.mediatype === undefined) {
     if (props.medialink != undefined) {
@@ -98,7 +105,7 @@ function DisplayMedia(props) {
         <View>
           <Text style={style.texterror}>Can't load the post properly</Text>
           <TouchableOpacity>
-            <Text>{`Check to load the full post: ${props.medialink}`}</Text>
+            <Text style={{color:'black'}}>{`Check to load the full post: ${props.medialink}`}</Text>
           </TouchableOpacity>
         </View>
       )
@@ -117,7 +124,8 @@ const style = StyleSheet.create({
   },
   title: {
     fontSize:9,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'black'
   },
   media: {
     paddingTop: 5,
@@ -132,5 +140,10 @@ const style = StyleSheet.create({
     resizeMode: 'contain',
     borderRadius: 5,
     padding: 5
+  },
+  video: {
+    height: 300,
+    borderRadius: 5,
+    padding : 5
   }
 })

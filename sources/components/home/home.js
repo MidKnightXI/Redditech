@@ -82,7 +82,8 @@ const style = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#ffff',
     fontFamily: 'tahoma',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'black'
   },
   posts: {
     flex: 9,
