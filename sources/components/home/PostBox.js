@@ -1,7 +1,7 @@
 import { useIsFocused } from '@react-navigation/native';
 import * as React from 'react'
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Linking } from 'react-native';
 import Video from 'react-native-video'
 
 import { useAuth } from '../../use-auth';
@@ -76,9 +76,16 @@ export default function PostBox(props) {
 }
 
 function DisplayMedia(props) {
+  const redirect = (url) => {
+    Linking.canOpenURL(url).then(supported => {
+      if (supported)
+        Linking.openURL(url);
+      else
+        console.log("Don't know how to open URI: " + url);
+    })
+  }
   if (props.mediatype === 'video') {
     const videoRef = React.useRef(null)
-
     return (
       <Video
         source={{ uri: props.medialink }}
@@ -104,7 +111,7 @@ function DisplayMedia(props) {
       return (
         <View>
           <Text style={style.texterror}>Can't load the post properly</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => redirect(props.medialink)}>
             <Text style={{color:'black'}}>{`Check to load the full post: ${props.medialink}`}</Text>
           </TouchableOpacity>
         </View>
