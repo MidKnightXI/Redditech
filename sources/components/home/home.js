@@ -62,19 +62,19 @@ export default function HomeScreen() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 7,
+    paddingTop: 7,
     alignItems: 'center',
     flexDirection: 'column'
   },
   buttonbar: {
     flexDirection: 'row',
-    flex: 1,
+    flex: 0.7,
   },
   button: {
     justifyContent: 'center',
     paddingLeft: 15,
-    paddingRight: 15,
-    paddingBottom: 6,
+    paddingRight: 12,
+    paddingBottom: 3,
     paddingTop: 6,
     borderWidth: 2,
     borderColor: 'darkorange',
@@ -88,7 +88,7 @@ const style = StyleSheet.create({
   posts: {
     flex: 9,
     flexDirection: 'column',
-    padding: 5,
+    padding: 8,
     justifyContent: 'center',
   },
   postcontainer: {

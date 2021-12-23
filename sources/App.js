@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -21,7 +21,7 @@ function App() {
           <Tab.Navigator
             initialRouteName="Home"
             activeColor="#000000"
-            barStyle={{ backgroundColor: 'darkorange'}}
+            barStyle={style.navbar}
           >
             <Tab.Screen
               name="Home"
@@ -59,5 +59,11 @@ function App() {
     </ProvideAuth>
   );
 }
+
+const style = StyleSheet.create({
+  navbar: {
+    backgroundColor: 'darkorange',
+  },
+})
 
 export default App;
