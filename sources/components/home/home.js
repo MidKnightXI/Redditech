@@ -48,7 +48,7 @@ export default function HomeScreen() {
           <ScrollView>
             {posts.map(element => {
               return (
-                <View style={style.postcontainer}>
+                <View style={style.postcontainer} key={++key}>
                   <PostBox data={element}/>
                 </View>
               )

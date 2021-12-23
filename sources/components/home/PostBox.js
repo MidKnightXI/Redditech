@@ -1,7 +1,7 @@
 import { useIsFocused } from '@react-navigation/native';
 import * as React from 'react'
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 import { useAuth } from '../../use-auth';
 
@@ -81,7 +81,12 @@ function DisplayMedia(props) {
     )
   } else if (props.mediatype === 'image') {
     return (
-      <Text>{`There will be an image here soon, link: ${props.medialink}`}</Text>
+      <Image
+        source={{
+          uri: props.medialink
+        }}
+        style={style.image}
+      />
     )
   } else if (props.mediatype === 'text') {
     return (
@@ -121,5 +126,11 @@ const style = StyleSheet.create({
   texterror: {
     fontWeight: 'bold',
     color: 'red'
+  },
+  image: {
+    height: 300,
+    resizeMode: 'contain',
+    borderRadius: 5,
+    padding: 5
   }
 })
