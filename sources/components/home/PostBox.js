@@ -3,21 +3,22 @@ import * as React from 'react'
 import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Linking } from 'react-native';
 import Video from 'react-native-video'
+import { IconButton } from 'react-native-paper';
 
 import { useAuth } from '../../use-auth';
 
 export default function PostBox(props) {
 
   const data = props.data
+  const clientStatus = useAuth();
 
   const subname = data.subreddit_name_prefixed
   const subtitle = data.title
-  const postid = data.id
   const postauth = data.author
-  const upvotes = data.ups
-  const downvotes = data.downs
+  const postid = data.name
 
   const [upvoteState, SetUpvoteState] = useState(null)
+
   let likes = data.likes
 
   let mediatype = undefined
@@ -45,17 +46,17 @@ export default function PostBox(props) {
     // True === upvote
     // False === downvote
     // null === neither up or down
-    if (voteType) {
-      console.log('upvoted')
-      SetUpvoteState(true)
-    } else if (!voteType) {
-      console.log('downvoted')
-      SetUpvoteState(false)
-    } else if (voteType === null) {
-      console.log('nullvoted')
+    if (clientStatus.isSignIn === false)
+      return
+    if (((voteType === true && upvoteState === true) || (voteType === false && upvoteState === false))) {
       SetUpvoteState(null)
-    } else {
-      console.info('UpVoteSystem: you fucked up dude')
+      clientStatus.voteRequest(postid, null)
+    } else if (voteType) {
+      SetUpvoteState(true)
+      clientStatus.voteRequest(postid, true)
+    } else if (!voteType) {
+      SetUpvoteState(false)
+      clientStatus.voteRequest(postid, false)
     }
   }
 
@@ -70,7 +71,20 @@ export default function PostBox(props) {
       <View style={style.media}>
         <DisplayMedia mediatype={mediatype} medialink={medialink}/>
       </View>
-      <View></View>
+      <View style={style.likebar}>
+        <IconButton
+          icon={upvoteState ? "thumb-up" : "thumb-up-outline"}
+          color={'darkorange'}
+          size={15}
+          onPress={() => toggleVote(true)}
+        />
+        <IconButton
+          icon={upvoteState === false ? "thumb-down" : "thumb-down-outline"}
+          color={'darkorange'}
+          size={15}
+          onPress={() => toggleVote(false)}
+        />
+      </View>
     </View>
   )
 }
@@ -152,5 +166,8 @@ const style = StyleSheet.create({
     height: 300,
     borderRadius: 5,
     padding : 5
+  },
+  likebar: {
+    flexDirection: 'row'
   }
 })
