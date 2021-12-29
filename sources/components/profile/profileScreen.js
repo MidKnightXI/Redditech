@@ -20,7 +20,9 @@ export default function ProfileScreen() {
             onPress={()=>setRenderParam(true)}
           />
         </View>
-        <Profile/>
+        <View style={style.screen}>
+          <Profile/>
+        </View>
       </View>
     );
   } else if (clientStatus.isSignIn === true && renderParam === true) {
@@ -34,7 +36,9 @@ export default function ProfileScreen() {
             onPress={()=>setRenderParam(false)}
           />
         </View>
-        {/* <Settings style={style.setting}/> */}
+        <View style={style.screen}>
+          {/* <Settings/> */}
+        </View>
       </View>
     )
   } else {
@@ -63,9 +67,10 @@ const style = StyleSheet.create({
   navbar: {
     flex: 1,
     flexDirection: 'row',
-    padding: 10
+    paddingLeft: 10,
+    alignItems: 'center'
   },
-  setting: {
-    flex: 9,
+  screen: {
+    flex: 10,
   }
 })

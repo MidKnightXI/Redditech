@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet} from 'react-native';
+import { View, Text, ScrollView, SafeAreaView, TouchableOpacity, StyleSheet} from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
@@ -45,15 +45,17 @@ export default function HomeScreen() {
         </View>
       </View>
         <View style={style.posts}>
-          <ScrollView>
-            {posts.map(element => {
-              return (
-                <View style={style.postcontainer} key={++key}>
-                  <PostBox data={element}/>
-                </View>
-              )
-            })}
-          </ScrollView>
+          <SafeAreaView>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              {posts.map(element => {
+                return (
+                  <View style={style.postcontainer} key={++key}>
+                    <PostBox data={element}/>
+                  </View>
+                )
+              })}
+            </ScrollView>
+          </SafeAreaView>
         </View>
     </View>
   );
