@@ -6,8 +6,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import HomeScreen from './components/home/home';
-import ProfileScreen from './components/profile/profile'
-import MessageScreen from './components/messages/messages';
+import ProfileScreen from './components/profile/profileScreen'
+import SearchScreen from './components/search/search';
 import { ProvideAuth } from "./use-auth.js";
 
 
@@ -19,12 +19,12 @@ function App() {
       <SafeAreaProvider>
         <NavigationContainer>
           <Tab.Navigator
-            initialRouteName="Home"
+            initialRouteName='Home'
             activeColor="#000000"
             barStyle={style.navbar}
           >
             <Tab.Screen
-              name="Home"
+              name='Home'
               component={HomeScreen}
               options={{
                 tabBarLabel: 'Home',
@@ -34,17 +34,17 @@ function App() {
               }}
             />
             <Tab.Screen
-              name="Messages"
-              component={MessageScreen}
+              name='Search'
+              component={SearchScreen}
               options={{
-                tabBarLabel: 'Messages',
+                tabBarLabel: 'Search',
                 tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons name="message-processing-outline" color={color} size={22} />
+                  <MaterialCommunityIcons name='magnify' color={color} size={22} />
                 ),
               }}
             />
             <Tab.Screen
-              name="Profile"
+              name='Profile'
               component={ProfileScreen}
               options={{
                 tabBarLabel: 'Profile',
