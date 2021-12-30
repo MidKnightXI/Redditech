@@ -37,7 +37,7 @@ export default function ProfileScreen() {
           />
         </View>
         <View style={style.screen}>
-          {/* <Settings/> */}
+          <Settings/>
         </View>
       </View>
     )

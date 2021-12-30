@@ -46,19 +46,39 @@ function useProvideAuth() {
       return null;
     }
   }
+
   const request = async (url, method) => {
     const config = {
       method: `${method}`,
-      headers: url.includes('oauth') ? {"Authorization": "bearer " + token} : undefined,
+      headers: url.includes('oauth') ? {
+        "Authorization": "bearer " + token
+      } : undefined,
       "User-agent": "Ego",
     }
-    console.log('Fetching on ' + url)
     const res = await fetch(url, config)
     const data = await res.json()
     if (data.error)
       throw data.message;
     return data;
   }
+
+  const patch = async (url, body) => {
+    const config = {
+      method: 'PATCH',
+      headers: url.includes('oauth') ? {
+          "Authorization": "bearer " + token, Accept: 'application/json',
+          "Content-Type": 'application/json',
+      } : undefined,
+      "User-agent": "Ego",
+      body: JSON.stringify(body)
+    }
+    try {
+      await fetch(url, config)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const voteRequest = async (postid, voteType) => {
     let form = new FormData()
     form.append('id', postid)
@@ -76,14 +96,19 @@ function useProvideAuth() {
       "User-agent": "Ego",
       body: form
     }
-    const data = await fetch('https://oauth.reddit.com/api/vote', config)
-    console.log(data.status)
+    try {
+      const tmp = await fetch('https://oauth.reddit.com/api/vote', config)
+    } catch (error) {
+      console.error(error)
+    }
   }
+
   return {
     token,
     isSignIn,
     signin,
     request,
+    patch,
     voteRequest,
   };
 }

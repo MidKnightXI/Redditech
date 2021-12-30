@@ -87,6 +87,5 @@ const style = StyleSheet.create({
   },
   text_infos: {
     fontSize: 11,
-    fontVariants: 'small-caps'
   }
 })
