@@ -87,5 +87,6 @@ const style = StyleSheet.create({
   },
   text_infos: {
     fontSize: 11,
+    color: 'black',
   }
 })

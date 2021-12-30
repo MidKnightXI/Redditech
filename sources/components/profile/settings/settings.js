@@ -42,48 +42,23 @@ export default function Settings() {
     }
   }, [isFocused])
 
-  const toggleSwitchState = async (obj) => {
-    settingsData[obj] = !settingsData[obj]
-    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData)
-    console.log('change value for ' + obj)
-    changeState(obj)
-  }
-
-  const changeState = (obj) => {
-    switch (obj) {
-      case 'activity_relevant_ads':
-        setActivityRelevantAds(prevState => !prevState)
-        break;
-      case 'allow_clicktracking':
-        setClicktracking(prevState => !prevState)
-        break;
-      case 'beta':
-        setBeta(prevState => !prevState)
-        break;
-      case 'third_party_data_personalized_ads':
-        setDataPersonalizedAds(prevState => !prevState)
-        break;
-      case 'third_party_personalized_ads':
-        setPersonalizedAds(prevState => !prevState)
-        break;
-      case 'third_party_site_data_personalized_ads':
-        setSiteDataPersonalizedAds(prevState => !prevState)
-        break;
-      case 'third_party_site_data_personalized_content':
-        setSiteDataPersonalizedContent(prevState => !prevState)
-        break;
-      default:
-        break;
-    }
+  const switchARA = async () => {
+    settingsData.activity_relevant_ads = !activityRelevantAds
+    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData);
+    setActivityRelevantAds(previousState => !previousState)
   }
 
   return (
     <View style={style.container}>
-      <SafeAreaView>
-        <FlatList>
-          <View></View>
-        </FlatList>
-      </SafeAreaView>
+      <View>
+        <View style={style.switch}>
+          <Text>Activity relevant ads</Text>
+          <Switch
+            onValueChange={switchARA}
+            value={activityRelevantAds}
+          />
+        </View>
+      </View>
     </View>
   )
 }
@@ -93,5 +68,8 @@ const style = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  switch: {
+    flexDirection: 'row'
   }
 })

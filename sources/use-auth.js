@@ -22,7 +22,9 @@ function useProvideAuth() {
       redirectUrl: 'com.egoapp.auth://oauth2redirect/reddit',
       clientId: 'SutU9k93wGLsYz3qWnHkQg',
       clientSecret: '', // empty string - needed for iOS
-      scopes: ['identity', 'edit', 'history', 'mysubreddits', 'privatemessages', 'read', 'report', 'submit', 'subscribe', 'vote'],
+      scopes: [
+        'identity', 'edit', 'history', 'mysubreddits', 'privatemessages',
+        'read', 'report', 'submit', 'subscribe', 'vote', 'account'],
       serviceConfiguration: {
         authorizationEndpoint: 'https://www.reddit.com/api/v1/authorize.compact',
         tokenEndpoint: 'https://www.reddit.com/api/v1/access_token',
@@ -66,14 +68,15 @@ function useProvideAuth() {
     const config = {
       method: 'PATCH',
       headers: url.includes('oauth') ? {
-          "Authorization": "bearer " + token, Accept: 'application/json',
-          "Content-Type": 'application/json',
+        "Authorization": "bearer " + token, Accept: 'application/json',
+        "Content-Type": 'application/json',
       } : undefined,
       "User-agent": "Ego",
       body: JSON.stringify(body)
     }
     try {
-      await fetch(url, config)
+      const tmp = await fetch(url, config)
+      console.log(tmp.status)
     } catch (error) {
       console.error(error)
     }
