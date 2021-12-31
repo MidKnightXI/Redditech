@@ -44,8 +44,38 @@ export default function Settings() {
 
   const switchARA = async () => {
     settingsData.activity_relevant_ads = !activityRelevantAds
-    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData);
     setActivityRelevantAds(previousState => !previousState)
+    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData);
+  }
+  const switchClicktracking = async () => {
+    settingsData.allow_clicktracking = !clicktacking
+    setClicktracking(previousState => !previousState)
+    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData);
+  }
+  const switchBeta = async () => {
+    settingsData.beta = !beta
+    setBeta(previousState => !previousState)
+    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData);
+  }
+  const switchDPA = async () => {
+    settingsData.third_party_data_personalized_ads = !dataPersonalizedAds
+    setDataPersonalizedAds(previousState => !previousState)
+    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData);
+  }
+  const switchPersonalizedAds = async () => {
+    settingsData.third_party_personalized_ads = !personalizedAds
+    setPersonalizedAds(previousState => !previousState)
+    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData);
+  }
+  const switchSDPA = async () => {
+    settingsData.third_party_site_data_personalized_ads = !siteDataPersonalizedAds
+    setSiteDataPersonalizedAds(previousState => !previousState)
+    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData);
+  }
+  const switchSDPC = async () => {
+    settingsData.third_party_site_data_personalized_content = !siteDataPersonalizedContent
+    setSiteDataPersonalizedContent(previousState => !previousState)
+    await clientStatus.patch('https://oauth.reddit.com/api/v1/me/prefs', settingsData);
   }
 
   return (
@@ -58,6 +88,48 @@ export default function Settings() {
             value={activityRelevantAds}
           />
         </View>
+        <View style={style.switch}>
+          <Text>Clicktracking</Text>
+          <Switch
+            onValueChange={switchClicktracking}
+            value={clicktacking}
+          />
+        </View>
+        <View style={style.switch}>
+          <Text>Reddit beta</Text>
+          <Switch
+            onValueChange={switchBeta}
+            value={beta}
+          />
+        </View>
+        <View style={style.switch}>
+          <Text>Data personalized ads</Text>
+          <Switch
+            onValueChange={switchDPA}
+            value={dataPersonalizedAds}
+          />
+        </View>
+        <View style={style.switch}>
+          <Text>Personalized ads</Text>
+          <Switch
+            onValueChange={switchPersonalizedAds}
+            value={personalizedAds}
+          />
+        </View>
+        <View style={style.switch}>
+          <Text>Site data personalized ads</Text>
+          <Switch
+            onValueChange={switchSDPA}
+            value={siteDataPersonalizedAds}
+          />
+        </View>
+        <View style={style.switch}>
+          <Text>Site data personalized content</Text>
+          <Switch
+            onValueChange={switchSDPC}
+            value={siteDataPersonalizedContent}
+          />
+        </View>
       </View>
     </View>
   )
@@ -67,7 +139,6 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
   },
   switch: {
     flexDirection: 'row'

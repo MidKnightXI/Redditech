@@ -75,8 +75,7 @@ function useProvideAuth() {
       body: JSON.stringify(body)
     }
     try {
-      const tmp = await fetch(url, config)
-      console.log(tmp.status)
+      await fetch(url, config)
     } catch (error) {
       console.error(error)
     }
