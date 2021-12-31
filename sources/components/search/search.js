@@ -14,7 +14,7 @@ export default function Search() {
   const autoComplete = async (txt) => {
     setSearchQuery(txt)
     const res = await clientStatus.request(
-      'https://oauth.reddit.com/api/subreddit_autocomplete_v2?include_profiles=false&limit=10&query=' +
+      'https://oauth.reddit.com/api/subreddit_autocomplete_v2?include_profiles=false&limit=5&query=' +
       encodeURI(txt), 'GET')
     setAutoCompleteQuery(res.data.children)
   }
