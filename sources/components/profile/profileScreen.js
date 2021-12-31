@@ -20,7 +20,7 @@ export default function ProfileScreen() {
             onPress={()=>setRenderParam(true)}
           />
         </View>
-        <View style={style.screen}>
+        <View style={style.content}>
           <Profile/>
         </View>
       </View>
@@ -36,7 +36,7 @@ export default function ProfileScreen() {
             onPress={()=>setRenderParam(false)}
           />
         </View>
-        <View style={style.screen}>
+        <View style={style.content}>
           <Settings/>
         </View>
       </View>
@@ -70,7 +70,7 @@ const style = StyleSheet.create({
     paddingLeft: 10,
     alignItems: 'center'
   },
-  screen: {
+  content: {
     flex: 10,
   }
 })

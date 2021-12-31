@@ -7,7 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import HomeScreen from './components/home/home';
 import ProfileScreen from './components/profile/profileScreen'
-import SearchScreen from './components/search/search';
+import SearchScreen from './components/search/searchScreen';
 import { ProvideAuth } from "./use-auth.js";
 
 
