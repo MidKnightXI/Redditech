@@ -31,15 +31,15 @@ export default function Search() {
         onClear={() => setSearchQuery('')}
         placeholder='Search'
         value={searchQuery}
-        lightTheme={true}
+        platform={'android'}
         round={true}
       />
       <View>
         {autoCompleteQuery.map(element => {
           if (element.kind === 't5') {
             return (
-              <View>
-                <SubredditBox data={element.data} key={++key}/>
+              <View key={++key}>
+                <SubredditBox data={element.data}/>
               </View>
             )
           }
