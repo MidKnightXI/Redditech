@@ -9,7 +9,7 @@ import { useIsFocused } from '@react-navigation/native';
 
 import { useAuth } from '../../use-auth';
 
-export default function Search() {
+export default function Search({navigation}) {
   const clientStatus = useAuth()
   const [searchQuery, setSearchQuery] = useState('')
   const [autoCompleteQuery, setAutoCompleteQuery] = useState([])
@@ -38,9 +38,9 @@ export default function Search() {
         {autoCompleteQuery.map(element => {
           if (element.kind === 't5') {
             return (
-              <View key={++key}>
+              <TouchableOpacity key={++key} onPress={() => navigation.navigate('Subreddit', {data: element.data})}>
                 <SubredditBox data={element.data}/>
-              </View>
+              </TouchableOpacity>
             )
           }
         })}
