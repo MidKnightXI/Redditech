@@ -70,7 +70,6 @@ const style = StyleSheet.create({
   },
   buttonbar: {
     flexDirection: 'row',
-    flex: 0.7,
   },
   button: {
     justifyContent: 'center',
@@ -88,13 +87,11 @@ const style = StyleSheet.create({
     color: 'black'
   },
   posts: {
-    flex: 9,
     flexDirection: 'column',
     padding: 8,
     justifyContent: 'center',
   },
   postcontainer: {
     paddingBottom: 3,
-    paddingTop: 3
   }
 })
