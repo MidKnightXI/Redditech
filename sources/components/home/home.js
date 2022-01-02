@@ -44,19 +44,17 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
       </View>
-        <View style={style.posts}>
-          <SafeAreaView>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              {posts.map(element => {
-                return (
-                  <View style={style.postcontainer} key={++key}>
-                    <PostBox data={element}/>
-                  </View>
-                )
-              })}
-            </ScrollView>
-          </SafeAreaView>
-        </View>
+        <SafeAreaView>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {posts.map(element => {
+              return (
+                <View style={style.postcontainer} key={++key}>
+                  <PostBox data={element}/>
+                </View>
+              )
+            })}
+          </ScrollView>
+        </SafeAreaView>
     </View>
   );
 }
@@ -86,12 +84,7 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black'
   },
-  posts: {
-    flexDirection: 'column',
-    padding: 8,
-    justifyContent: 'center',
-  },
   postcontainer: {
-    paddingBottom: 3,
+    padding: 8
   }
 })

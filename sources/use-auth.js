@@ -105,6 +105,20 @@ function useProvideAuth() {
     }
   }
 
+  const subscribeRequest = async (sub_id, state) => {
+    console.log(state ? 'unsub' : 'sub')
+    let form = new FormData();
+    form.append('sr', sub_id)
+    form.append('action', state ? 'unsub' : 'sub')
+    const config = {
+      method: 'POST',
+      headers: {"Authorization": "bearer " + token},
+      "User-agent": "Ego",
+      body: form
+    }
+    const res = await fetch('https://oauth.reddit.com/api/subscribe', config)
+  }
+
   return {
     token,
     isSignIn,
@@ -112,5 +126,6 @@ function useProvideAuth() {
     request,
     patch,
     voteRequest,
+    subscribeRequest,
   };
 }
