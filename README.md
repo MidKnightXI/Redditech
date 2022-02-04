@@ -6,4 +6,14 @@ To fix this go to:
 
 Change in the `build.gradle` every `2.13.2` by `2.13.3`
 
-This bug has already been reported to the devs of react-native-video but isn't fixed on the version we are using.
+This bug has already been reported to the devs of react-native-video but and we fixed it by ourselves.
+
+## Setup
+
+First you need to [configure your Android emulator](https://reactnative.dev/docs/environment-setup#development-os)
+
+- Fix the bug called above
+- Install dependencies with `yarn install` or `npm install`.
+- Open a shell and run `yarn react-native start` or `npm react-native start`.
+- Open a new shell and execute `yarn react-native run-android` or `npm react-native run-android`
+- Enjoy 🥰
