@@ -20,7 +20,7 @@ First you need to [configure your Android emulator](https://reactnative.dev/docs
 
 ### Info
 
-You won't be able to connect with your Reddit because I deleted the app on Reddit, if you want to test it put your own infos in `sources/use-auth.js`
+You won't be able to connect with your Reddit account because I deleted the app on Reddit, if you want to test it put your own infos in `sources/use-auth.js`
 
 ```js
 function useProvideAuth() {
