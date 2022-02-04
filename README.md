@@ -17,3 +17,29 @@ First you need to [configure your Android emulator](https://reactnative.dev/docs
 - Open a shell and run `yarn react-native start` or `npm react-native start`.
 - Open a new shell and execute `yarn react-native run-android` or `npm react-native run-android`
 - Enjoy 🥰
+
+### Info
+
+You won't be able to connect with your Reddit because I deleted the app on Reddit, if you want to test it put your own infos in `sources/use-auth.js`
+
+```js
+. . .
+
+function useProvideAuth() {
+
+. . .
+
+  const config = {
+    . . .
+    
+    clientId: '<clientID>',
+    
+    . . .
+    
+  customHeaders: {
+    token: {
+      Authorization: 'Basic <base64encoded clientID:>',
+    },
+  },
+}
+```
