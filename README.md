@@ -32,11 +32,11 @@ function useProvideAuth() {
     
     . . .
     
-    customHeaders: {
-      token: {
-        Authorization: 'Basic <base64encoded clientID:>',
+      customHeaders: {
+        token: {
+          Authorization: 'Basic <base64encoded clientID:>',
+        },
       },
-    },
   }
 }
 ```
